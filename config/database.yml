@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: mp3info_development
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: mp3info_test
+  host: localhost
+  port: 5432
