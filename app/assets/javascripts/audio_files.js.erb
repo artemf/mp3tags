@@ -1,0 +1,23 @@
+function checkAudioFileForProcessing() {
+    var id = $("input[name=processing_audio_id]").val();
+    window.setTimeout(
+            function () {
+                $.get("/audio_files/" + id + ".json",function (data) {
+                    if (data['processing'] == true) {
+                        checkAudioFileForProcessing();
+                    } else {
+                        location.reload();
+                    }
+                }).fail(function () {
+                    checkAudioFileForProcessing();
+                })
+            },
+            2000);
+
+}
+
+$(function () {
+    $("input[name=processing_audio_id]").each(function () {
+        checkAudioFileForProcessing();
+    });
+});

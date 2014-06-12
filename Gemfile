@@ -15,6 +15,8 @@ group :doc do
 end
 
 gem 'ruby-mp3info'
+gem 'delayed_job_active_record'
+gem 'simple_form'
 
 gem 'pg'
 
@@ -26,9 +28,10 @@ gem 'rack-timeout'
 gem 'unicorn'
 
 
-# Support Heroku
 group :production do
+  # Support Heroku
   gem 'rails_12factor'
+  gem 'workless'
 end
 
 group :development, :test do
