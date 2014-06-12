@@ -14,7 +14,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'mp3info'
+gem 'ruby-mp3info'
 
 gem 'pg'
 
