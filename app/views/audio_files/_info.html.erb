@@ -1,12 +1,19 @@
-
 <%
-    info = JSON.parse(@audio_file.info)
+   info = JSON.parse(@audio_file.info)
+   info['tags2'].keys.each do |key|
+    if ID3v2::TAGS.has_key? key
+        name = ID3v2::TAGS[key]
+        value = info['tags2'][key]
+        info['tags2'].delete(key)
+        info['tags2'][name] = value
+    end
+   end
 %>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <p>
-      <%= @audio_file.url %>
-    </p>
-    <pre><%= info.to_yaml %></pre>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <p>
+          <%= @audio_file.url %>
+        </p>
+        <pre><%= JSON.pretty_generate(info) %></pre>
+      </div>
+    </div>
