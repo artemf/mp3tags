@@ -29,12 +29,22 @@ module Processable
 
   def mp3info_to_hash(mp3)
     result = {
-        tags: mp3.tag || {},
-        tags1: mp3.tag1 || {},
-        tags2: mp3.tag2 || {}
+        tags: mp3.tag.dup || {},
+        tags1: mp3.tag1.dup || {},
+        tags2: mp3.tag2.dup || {}
     }
     result[:tags2].delete('APIC')
     result[:tags2].delete('PIC')
+    [:tags, :tags1, :tags2].each do |t|
+      section = result[t]
+      section.each do |key,value|
+        begin
+          section[key] = value.dup.to_s.encode('UTF-8', {invalid: :replace, undef: :replace, replace: '?' })
+        rescue
+          section[key] = '<binary>'
+        end
+      end
+    end
     result
   end
 end
