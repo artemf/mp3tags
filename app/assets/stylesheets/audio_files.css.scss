@@ -1,3 +1,42 @@
-// Place all the styles related to the AudioFiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.screen-center {
+  color: gray;
+  position:fixed;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px; /*set to a negative number 1/2 of your height*/
+  margin-left: -20px; /*set to a negative number 1/2 of your width*/
+}
+
+$s : 0.0;
+$e : 0.4;
+
+.progress-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,$s) 0%, rgba(0,0,0, $e) 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,$s)), color-stop(100%,rgba(0,0,0, $e))); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,$s) 0%,rgba(0,0,0, $e) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,$s) 0%,rgba(0,0,0, $e) 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(0,0,0,$s) 0%,rgba(0,0,0, $e) 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  rgba(0,0,0,$s) 0%,rgba(0,0,0, $e) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#45000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.error-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #C1453B;
+}
+
+.error-row {
+  color: #FFF1EF;
+}

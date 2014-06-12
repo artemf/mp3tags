@@ -1,7 +1,17 @@
-<form role="form" method="POST" action="<%= audio_files_path %>">
-  <div class="form-group">
-    <label for="mp3url">MP3 url</label>
-    <input type="url" class="form-control" name="mp3url" id="mp3url" placeholder="http://...">
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="jumbotron" style="margin-top: 30px">
+      <h1>Read MP3 Metdata Online</h1>
+      <p>
+        Enter your mp3 url in the form below.
+      </p>
+      <form role="form" method="POST" action="<%= audio_files_path %>">
+        <div class="form-group">
+          <!--<label for="mp3url">Enter mp3 url</label>-->
+          <input type="url" class="form-control" name="mp3url" id="mp3url" placeholder="http://">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Get Info</button>
+      </form>
+     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

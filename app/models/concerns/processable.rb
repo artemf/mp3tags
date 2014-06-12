@@ -28,12 +28,13 @@ module Processable
   end
 
   def mp3info_to_hash(mp3)
-    {
-        title: mp3.tag.title,
-        artist: mp3.tag.artist,
-        album: mp3.tag.album,
-        album_artist: mp3.tag.album_artist,
-        composer: mp3.tag.composer
+    result = {
+        tags: mp3.tag || {},
+        tags1: mp3.tag1 || {},
+        tags2: mp3.tag2 || {}
     }
+    result[:tags2].delete('APIC')
+    result[:tags2].delete('PIC')
+    result
   end
 end

@@ -1,0 +1,13 @@
+<div class="error-backdrop"></div>
+<div class="row error-row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="text-center" style="margin-top: 60px">Error!</h2>
+    <p class="text-center" style="margin-top: 30px; font-size: 20px">
+      <%= @audio_file.error %>
+    </p>
+    <p style="margin-top: 60px">
+      While processing mp3:
+      <pre><%= @audio_file.url %></pre>
+    </p>
+  </div>
+</div>

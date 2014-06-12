@@ -14,10 +14,6 @@ class AudioFilesController < ApplicationController
   end
 
   def show
-    #respond_to do |format|
-    #  format.html { render }
-    #  format.json { render }
-    #end
   end
 
   private

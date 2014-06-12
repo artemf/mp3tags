@@ -1,13 +1,7 @@
 <% if @audio_file.processing %>
-    <input type="hidden" name="processing_audio_id" value="<%= @audio_file.id %>">
-    <p>
-      processing <%= @audio_file.url %>
-    </p>
-<% else %>
-    <p>
-      complete <%= @audio_file.url %>
-    </p>
-    <pre>
-      <%= @audio_file.info || @audio_file.error  %>
-    </pre>
+    <%= render partial: 'processing' %>
+<% elsif @audio_file.info %>
+    <%= render partial: 'info' %>
+<% elsif @audio_file.error %>
+    <%= render partial: 'error' %>
 <% end %>
