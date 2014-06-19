@@ -35,7 +35,7 @@ module Processable
     }
     result[:tags2]['APIC'] = 'Picture present' if result[:tags2].has_key?('APIC')
     result[:tags2]['PIC'] = 'Picture present' if result[:tags2].has_key?('PIC')
-    [:tags, :tags1, :tags2].each do |t|
+    [:tags1, :tags2].each do |t|
       section = result[t]
       section.each do |key,value|
         begin
