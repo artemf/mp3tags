@@ -33,8 +33,8 @@ module Processable
         tags1: mp3.tag1.dup || {},
         tags2: mp3.tag2.dup || {}
     }
-    result[:tags2]['APIC'] = 'Picture present' if result[:tags2].has_key?('APIC')
-    result[:tags2]['PIC'] = 'Picture present' if result[:tags2].has_key?('PIC')
+    result[:tags2]['APIC'] = '<picture present>' if result[:tags2].has_key?('APIC')
+    result[:tags2]['PIC'] = '<picture present>' if result[:tags2].has_key?('PIC')
     [:tags1, :tags2].each do |t|
       section = result[t]
       section.each do |key,value|
