@@ -1,19 +1,45 @@
 <%
    info = JSON.parse(@audio_file.info)
+   tags2 = info['tags2'].dup
    info['tags2'].keys.each do |key|
-    if ID3v2::TAGS.has_key? key
-        name = ID3v2::TAGS[key]
-        value = info['tags2'][key]
-        info['tags2'].delete(key)
-        info['tags2'][name] = value
-    end
+     if ID3v2::TAGS.has_key? key
+       name = ID3v2::TAGS[key]
+       value = info['tags2'][key]
+       info['tags2'].delete(key)
+       info['tags2'][name] = value
+     end
    end
+   head = [
+           ['Title', 'TIT2'],
+           ['Artist', 'TPE1'],
+           ['Year', 'TYER'],
+           ['Composer', 'TCOM'],
+           ['Album Title', 'TALB'],
+           ['Album Artist', 'TPE2'],
+           ['Track', 'TRCK'],
+           ['Genre', 'TCON'],
+           ['Copyright', 'TCOP'],
+           ['Publisher', 'TPUB'],
+           ['Cover art', 'APIC']
+   ]
 %>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <p>
-          <%= @audio_file.url %>
-        </p>
-        <pre><%= JSON.pretty_generate(info) %></pre>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <p>
+      <%= @audio_file.url %>
+    </p>
+
+    <form class="form-horizontal" role="form">
+      <% head.each do |pair| %>
+          <% if tags2.has_key? pair.second %>
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><%= pair.first %></label>
+                <div class="col-sm-10">
+                  <input class="form-control" value="<%= tags2[pair.second] %>" readonly>
+                </div>
+              </div>
+          <% end %>
+      <% end %>
+    <pre><%= JSON.pretty_generate(info) %></pre>
+  </div>
+</div>
