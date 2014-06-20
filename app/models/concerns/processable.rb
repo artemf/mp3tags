@@ -13,7 +13,7 @@ module Processable
     self.update({ processing: true, error: nil, info: nil })
     begin
       open(self.url, 'rb') do |external|
-        Mp3Info.open(external) do |mp3|
+        Mp3Info.open(external, {parse_mp3: false}) do |mp3|
           self.update!({ info: mp3info_to_hash(mp3).to_json })
         end
       end
