@@ -28,11 +28,10 @@ module Processable
   end
 
   def mp3info_to_hash(mp3)
-    result = {
-        #tags: mp3.tag.dup || {},
-        tags1: mp3.tag1.dup || {},
-        tags2: mp3.tag2.dup || {}
-    }
+    result = {}
+    result[:pictures] = extract_pictures(mp3)
+    result[:tags1] = mp3.tag1.dup || {}
+    result[:tags2] = mp3.tag2.dup || {}
     result[:tags2]['APIC'] = '<picture present>' if result[:tags2].has_key?('APIC')
     result[:tags2]['PIC'] = '<picture present>' if result[:tags2].has_key?('PIC')
     [:tags1, :tags2].each do |t|
@@ -44,6 +43,15 @@ module Processable
           section[key] = '<binary>'
         end
       end
+    end
+    result
+  end
+
+  def extract_pictures(mp3)
+    result = []
+    pictures = mp3.tag2.pictures
+    pictures.each do |description, data|
+      result << Picture.new(description, data, self).url
     end
     result
   end

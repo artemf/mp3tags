@@ -1,6 +1,7 @@
 <%
    info = JSON.parse(@audio_file.info)
    tags2 = info['tags2'].dup
+   pictures = info['pictures']
    info['tags2'].keys.each do |key|
      if ID3v2::TAGS.has_key? key
        name = ID3v2::TAGS[key]
@@ -24,10 +25,14 @@
    ]
 %>
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-12">
     <p>
       <%= @audio_file.url %>
     </p>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
 
     <form class="form-horizontal" role="form">
       <% head.each do |pair| %>
@@ -40,6 +45,21 @@
               </div>
           <% end %>
       <% end %>
-    <pre><%= JSON.pretty_generate(info) %></pre>
   </div>
+  <div class="col-md-4">
+    <% unless pictures.empty? %>
+          <% pictures.each do |pic| %>
+            <div>
+              <a href="<%= pic %>" target="_blank"><img src="<%= pic %>" class="img-thumbnail img-responsive"></a>
+            </div>
+          <% end %>
+    <% end %>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <pre><%= JSON.pretty_generate(info) %></pre>
+    </div>
+  </div>
+
 </div>

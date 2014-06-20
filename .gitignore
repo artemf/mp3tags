@@ -8,7 +8,7 @@ capybara-*.html
 /coverage/
 /spec/tmp
 **.orig
-
+01_s3_auth.rb
 
 ## Environment normalisation:
 /.bundle

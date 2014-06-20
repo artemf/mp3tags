@@ -18,6 +18,8 @@ gem 'ruby-mp3info'
 gem 'delayed_job_active_record'
 gem 'simple_form'
 
+gem 'aws-sdk'
+
 gem 'pg'
 
 # Use ActiveModel has_secure_password
