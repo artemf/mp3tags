@@ -1,15 +1,4 @@
 <%
-   info = JSON.parse(@audio_file.info)
-   tags2 = info['tags2'].dup
-   pictures = info['pictures']
-   info['tags2'].keys.each do |key|
-     if ID3v2::TAGS.has_key? key
-       name = ID3v2::TAGS[key]
-       value = info['tags2'][key]
-       info['tags2'].delete(key)
-       info['tags2'][name] = value
-     end
-   end
    head = [
            ['Title', 'TIT2'],
            ['Artist', 'TPE1'],
@@ -36,19 +25,19 @@
 
     <form class="form-horizontal" role="form">
       <% head.each do |pair| %>
-          <% if tags2.has_key? pair.second %>
+          <% if @tags2.has_key? pair.second %>
               <div class="form-group">
                 <label class="col-sm-2 control-label"><%= pair.first %></label>
                 <div class="col-sm-10">
-                  <input class="form-control" value="<%= tags2[pair.second] %>" readonly>
+                  <input class="form-control" value="<%= @tags2[pair.second] %>" readonly>
                 </div>
               </div>
           <% end %>
       <% end %>
   </div>
   <div class="col-md-4">
-    <% unless pictures.empty? %>
-          <% pictures.each do |pic| %>
+    <% unless @pictures.empty? %>
+          <% @pictures.each do |pic| %>
             <div>
               <a href="<%= pic %>" target="_blank"><img src="<%= pic %>" class="img-thumbnail img-responsive"></a>
             </div>
@@ -58,7 +47,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <pre><%= JSON.pretty_generate(info) %></pre>
+      <pre><%= JSON.pretty_generate(@tags) %></pre>
     </div>
   </div>
 

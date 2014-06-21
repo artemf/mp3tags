@@ -1,7 +1,0 @@
-<% if @audio_file.processing %>
-    <%= render partial: 'processing' %>
-<% elsif @audio_file.info %>
-    <%= render partial: 'info' %>
-<% elsif @audio_file.error %>
-    <%= render partial: 'error' %>
-<% end %>
