@@ -1,0 +1,28 @@
+{
+    "name": "mp3tags",
+    "scripts": {
+    },
+    "env": {
+        "HEROKU_API_KEY": {
+            "required": true
+        },
+        "RACK_ENV": {
+            "required": true
+        },
+        "RAILS_ENV": {
+            "required": true
+        },
+        "S3_KEY": {
+            "required": true
+        },
+        "S3_SECRET": {
+            "required": true
+        },
+        "SECRET_KEY_BASE": {
+            "required": true
+        }
+    },
+    "addons": [
+        "heroku-postgresql"
+    ]
+}
