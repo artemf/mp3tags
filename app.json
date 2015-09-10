@@ -1,6 +1,7 @@
 {
     "name": "mp3tags",
     "scripts": {
+        "postdeploy": "heroku ps:scale worker=2"
     },
     "env": {
         "HEROKU_API_KEY": {
